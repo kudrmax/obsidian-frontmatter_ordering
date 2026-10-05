@@ -11,6 +11,7 @@ import {
 	isSortEligibleForReorder,
 	markdownEntriesFromResult,
 	reorderSortDirectionFromConfig,
+	viewScopedSettings,
 } from './context';
 import {
 	applyLinkDragSuppression,
@@ -1174,12 +1175,15 @@ export class BasesReorderController {
 			source.groupIndex,
 		);
 		const files = filesFromEntries(entries);
-		const settings = this.getSettings();
+		const settings = viewScopedSettings(
+			drag.container.config,
+			this.getSettings(),
+		);
 		const displayDirection = reorderSortDirectionFromConfig(
 			drag.container.config,
-			settings,
+			this.getSettings(),
 		);
-		if (!displayDirection) {
+		if (!settings || !displayDirection) {
 			return;
 		}
 
