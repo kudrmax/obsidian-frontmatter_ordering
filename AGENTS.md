@@ -79,7 +79,8 @@ npm run build
 
 ## Testing
 
-- Manual install for testing: copy `main.js`, `manifest.json`, `styles.css` (if any) to:
+- Never into Max's own vault `~/Obsidian`: a branch is tried only in a separate scratch Obsidian with its own profile and vault. Released versions reach `~/Obsidian` only as Max's global `~/.claude/CLAUDE.md`, section «Свои плагины Obsidian» says: the agent installs them, Max installs nothing.
+- Manual install for testing (scratch vault only): copy `main.js`, `manifest.json`, `styles.css` (if any) to:
     ```
     <Vault>/.obsidian/plugins/<plugin-id>/
     ```
@@ -96,7 +97,8 @@ npm run build
 
 - Bump `version` in `manifest.json` (SemVer) and update `versions.json` to map plugin version → minimum app version.
 - Create a GitHub release whose tag exactly matches `manifest.json`'s `version`. Do not use a leading `v`.
-- Attach `manifest.json`, `main.js`, and `styles.css` (if present) to the release as individual assets.
+- Attach `manifest.json`, `main.js`, and `styles.css` (if present) to the release as individual assets. Here CI (`.github/workflows/release.yml`) builds the release when a version tag is pushed.
+- Then pull it into Max's Obsidian yourself, as Max's global `~/.claude/CLAUDE.md`, section «Свои плагины Obsidian» says: BRAT lists it as `kudrmax/obsidian-frontmatter_ordering`.
 - After the initial release, follow the process to add/update your plugin in the community catalog as required.
 
 ## Security, privacy, and compliance
